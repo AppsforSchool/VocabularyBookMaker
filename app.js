@@ -91,6 +91,28 @@ $('#add').onclick=()=>{
   rects[best].push(r);select(makeRect(pgs[best].querySelector('.layer'),best,r));
 };
 
+/* ---------- 拡大・縮小 ---------- */
+let zoom=1;
+function applyZoom(){
+  const base=Math.min(900,innerWidth-24);
+  const root=document.documentElement.style;
+  root.setProperty('--pw',base*zoom+'px');
+  root.setProperty('--r',Math.max(4,8*zoom)+'px');
+  $('#zv').textContent=Math.round(zoom*100)+'%';
+}
+function setZoom(z){
+  const m=$('main'),cx=(m.scrollLeft+m.clientWidth/2)/m.scrollWidth,cy=(scrollY+innerHeight/2)/document.documentElement.scrollHeight;
+  zoom=Math.min(4,Math.max(.5,Math.round(z*100)/100));applyZoom();
+  m.scrollLeft=cx*m.scrollWidth-m.clientWidth/2;
+  scrollTo(0,cy*document.documentElement.scrollHeight-innerHeight/2);
+}
+$('#zi').onclick=()=>setZoom(zoom*1.25);
+$('#zo').onclick=()=>setZoom(zoom/1.25);
+$('#zv').onclick=()=>setZoom(1);
+addEventListener('resize',applyZoom);
+addEventListener('wheel',e=>{if(e.ctrlKey){e.preventDefault();setZoom(zoom*(e.deltaY<0?1.1:1/1.1));}},{passive:false});
+applyZoom();
+
 /* ---------- モード ---------- */
 function setMode(m){
   document.body.className=m;

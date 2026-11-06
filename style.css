@@ -12,16 +12,17 @@ button,.btn{font:inherit;font-size:.9rem;color:var(--ink);background:var(--panel
 button:hover,.btn:hover{border-color:var(--accent)}
 :focus-visible{outline:2px solid var(--red);outline-offset:2px}
 body.edit .use-only,body.use .edit-only{display:none}
-main{max-width:900px;margin:0 auto;padding:16px 12px 80px}
+main{overflow-x:auto;padding:16px 12px 80px}
+#pages{width:max-content;min-width:100%}
 #empty{text-align:center;color:#7a8794;margin-top:15vh}
 #empty.hide{display:none}
-.page{position:relative;margin:0 auto 16px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);line-height:0}
+.page{position:relative;margin:0 auto 16px;width:var(--pw,860px);background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);line-height:0}
 .page>canvas,.page>img{width:100%;height:auto;display:block}
 .layer{position:absolute;inset:0}
-.rect{position:absolute;background:var(--red);border-radius:min(14px,18%);transition:opacity .15s}
+.rect{position:absolute;background:var(--red);border-radius:calc(var(--r,8px));transition:opacity .15s}
 body.use .rect{cursor:pointer;-webkit-tap-highlight-color:transparent}
 body.use .rect.off{opacity:.1}
-body.edit .rect{cursor:move;touch-action:none;box-shadow:0 0 0 1px rgba(255,255,255,.6) inset}
+body.edit .rect{cursor:move;touch-action:none}
 body.edit .rect.sel{outline:2px solid #1c2733;outline-offset:2px}
 .rect .h,.rect .x{display:none}
 body.edit .rect.sel .h{display:block;position:absolute;right:-8px;bottom:-8px;width:26px;height:26px;background:#fff;border:2px solid #1c2733;border-radius:50%;cursor:nwse-resize;touch-action:none}
@@ -32,3 +33,4 @@ dialog li{display:flex;gap:6px;align-items:center;padding:8px 0;border-bottom:1p
 dialog li span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--accent);color:var(--panel);padding:8px 16px;border-radius:20px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s}
 #toast.show{opacity:1}
+.zoom{display:flex;align-items:center;gap:4px}.zoom button{padding:6px 10px}#zv{min-width:3.4em;text-align:center;font-size:.9rem}
