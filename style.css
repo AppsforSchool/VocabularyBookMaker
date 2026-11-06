@@ -1,0 +1,34 @@
+:root{--bg:#eef1f4;--ink:#1c2733;--line:#cfd6dd;--red:#e0322b;--panel:#fff;--accent:#1c2733}
+@media (prefers-color-scheme:dark){:root{--bg:#161b21;--ink:#e8ecf0;--line:#323b45;--panel:#1e252d;--accent:#e8ecf0}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;line-height:1.6}
+header{position:sticky;top:0;z-index:10;background:var(--panel);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+h1{font-size:1.05rem;margin:0;letter-spacing:.04em}
+.modes{display:flex;border:1px solid var(--accent);border-radius:8px;overflow:hidden}
+.modes button{border:0;border-radius:0;background:transparent;padding:6px 18px}
+.modes button.on{background:var(--accent);color:var(--panel)}
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+button,.btn{font:inherit;font-size:.9rem;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover,.btn:hover{border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+body.edit .use-only,body.use .edit-only{display:none}
+main{max-width:900px;margin:0 auto;padding:16px 12px 80px}
+#empty{text-align:center;color:#7a8794;margin-top:15vh}
+#empty.hide{display:none}
+.page{position:relative;margin:0 auto 16px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);line-height:0}
+.page>canvas,.page>img{width:100%;height:auto;display:block}
+.layer{position:absolute;inset:0}
+.rect{position:absolute;background:var(--red);border-radius:min(14px,18%);transition:opacity .15s}
+body.use .rect{cursor:pointer;-webkit-tap-highlight-color:transparent}
+body.use .rect.off{opacity:.1}
+body.edit .rect{cursor:move;touch-action:none;box-shadow:0 0 0 1px rgba(255,255,255,.6) inset}
+body.edit .rect.sel{outline:2px solid #1c2733;outline-offset:2px}
+.rect .h,.rect .x{display:none}
+body.edit .rect.sel .h{display:block;position:absolute;right:-8px;bottom:-8px;width:26px;height:26px;background:#fff;border:2px solid #1c2733;border-radius:50%;cursor:nwse-resize;touch-action:none}
+body.edit .rect.sel .x{display:block;position:absolute;right:-8px;top:-30px;width:26px;height:26px;line-height:22px;text-align:center;background:#1c2733;color:#fff;border-radius:50%;font-size:16px;cursor:pointer}
+dialog{border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);width:min(440px,92vw)}
+dialog ul{list-style:none;padding:0;margin:0 0 12px}
+dialog li{display:flex;gap:6px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+dialog li span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--accent);color:var(--panel);padding:8px 16px;border-radius:20px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.show{opacity:1}

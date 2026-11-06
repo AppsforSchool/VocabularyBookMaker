@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>かくし単語帳</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="edit">
+<header>
+  <h1>かくし単語帳</h1>
+  <div class="modes" role="group" aria-label="モード">
+    <button id="m-edit" class="on">編集</button>
+    <button id="m-use">使用</button>
+  </div>
+  <div class="tools">
+    <label class="btn">画像 / PDFを開く<input id="file" type="file" accept="image/*,application/pdf" hidden></label>
+    <button id="add" class="edit-only">＋ 赤い枠を追加</button>
+    <button id="hideAll" class="use-only">すべて隠す</button>
+    <button id="showAll" class="use-only">すべて表示</button>
+    <button id="save">保存</button>
+    <button id="lib">保存済み</button>
+  </div>
+</header>
+<main>
+  <p id="empty">画像またはPDFを開いてください。保存済みの単語帳は「保存済み」から読み込めます。</p>
+  <div id="pages"></div>
+</main>
+<dialog id="dlg">
+  <h2>保存済み</h2>
+  <ul id="list"></ul>
+  <button id="close">閉じる</button>
+</dialog>
+<div id="toast" role="status"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
